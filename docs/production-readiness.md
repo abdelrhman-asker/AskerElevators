@@ -29,6 +29,8 @@ Phase 1 is a development foundation, not a production deployment. Complete and r
 
 ## Web and API delivery
 
+- [x] Add repository-level Vercel build manifests, a Vite SPA fallback, and a listener-free Express deployment entry.
+- [ ] Create and verify the separate web/API Vercel projects, environment scopes, production domains, and rollback behavior.
 - [ ] Choose and document supported browsers, accessibility target, and Arabic/English content ownership.
 - [ ] Run automated browser tests and manual keyboard, screen-reader, narrow/wide viewport, RTL, and LTR reviews.
 - [ ] Configure production web/API origins, cache policy, compression, asset hosting, and SPA route fallback.

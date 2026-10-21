@@ -13,6 +13,7 @@ dist/
 coverage/
 .vite/
 *.tsbuildinfo
+.vercel/
 
 # Environment files (examples remain trackable)
 .env

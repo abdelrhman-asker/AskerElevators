@@ -1,5 +1,5 @@
 export const englishMessages = {
-  "app.title": "Elevator Platform",
+  "app.title": "Asker Elevators",
   "app.eyebrow": "Experience preview",
   "app.heading": "One clear view of every elevator service operation.",
   "app.introduction": "Explore a bilingual product prototype for coordinating maintenance, customers, technicians, and equipment. Demo records are illustrative and are never sent to the API.",

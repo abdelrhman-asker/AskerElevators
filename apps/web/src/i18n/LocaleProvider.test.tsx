@@ -39,7 +39,7 @@ describe("LocaleProvider", () => {
   it("defaults to Arabic and synchronizes RTL document attributes", async () => {
     await renderLocaleProvider();
 
-    expect(screen.getByText("منصة المصاعد")).toBeInTheDocument();
+    expect(screen.getByText("عسكر للمصاعد")).toBeInTheDocument();
     expect(document.documentElement).toHaveAttribute("lang", "ar");
     expect(document.documentElement).toHaveAttribute("dir", "rtl");
   });
@@ -49,7 +49,7 @@ describe("LocaleProvider", () => {
 
     await renderLocaleProvider();
 
-    expect(screen.getByText("Elevator Platform")).toBeInTheDocument();
+    expect(screen.getByText("Asker Elevators")).toBeInTheDocument();
     expect(document.documentElement).toHaveAttribute("lang", "en");
     expect(document.documentElement).toHaveAttribute("dir", "ltr");
   });
@@ -86,6 +86,6 @@ describe("LocaleProvider", () => {
     expect(readStoredLocale()).toBe("ar");
     await renderLocaleProvider();
 
-    expect(screen.getByText("منصة المصاعد")).toBeInTheDocument();
+    expect(screen.getByText("عسكر للمصاعد")).toBeInTheDocument();
   });
 });

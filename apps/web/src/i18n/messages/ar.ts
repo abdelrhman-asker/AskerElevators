@@ -1,7 +1,7 @@
 import type { Messages } from "./en";
 
 export const arabicMessages = {
-  "app.title": "منصة المصاعد", "app.eyebrow": "معاينة التجربة", "app.heading": "رؤية واضحة لكل عمليات خدمة المصاعد.",
+  "app.title": "عسكر للمصاعد", "app.eyebrow": "معاينة التجربة", "app.heading": "رؤية واضحة لكل عمليات خدمة المصاعد.",
   "app.introduction": "استكشف نموذجًا أوليًا ثنائي اللغة لتنسيق الصيانة والعملاء والفنيين والمعدات. البيانات التجريبية توضيحية ولا تُرسل إلى واجهة البرمجة.",
   "app.localeDirection": "اتجاه القراءة الحالي", "app.direction.ltr": "من اليسار إلى اليمين", "app.direction.rtl": "من اليمين إلى اليسار",
   "app.openDemo": "فتح لوحة العرض", "app.openWebsite": "معاينة الموقع العام", "app.demoCard.title": "مساحة عمل العمليات",

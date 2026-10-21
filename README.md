@@ -6,6 +6,8 @@ The dashboard and public website routes use deterministic, clearly labeled sampl
 
 See [Architecture](docs/architecture.md) for package boundaries and request/configuration flows, and [Production preparation](docs/production-readiness.md) for the work required before a production release.
 
+Deployment scaffolding is documented in [Vercel deployment](docs/vercel-deployment.md). The repository is configured as separate web and API Vercel projects; no deployment or cloud database is created automatically.
+
 ## Prerequisites
 
 - Node.js 24 (`.nvmrc` and `package.json` require `>=24 <25`)
@@ -159,6 +161,17 @@ compose.yaml           Local PostgreSQL service
 ```
 
 Dependency direction is `apps/web -> @elevator/shared` and `apps/api -> @elevator/shared`. Shared code never depends on either application, and applications never import each other's source.
+
+## Vercel deployment
+
+The same GitHub repository is imported into two Vercel projects:
+
+| Project | Root Directory | Tracked configuration |
+| --- | --- | --- |
+| Web | `apps/web` | Vite build, `dist` output, and SPA fallback in `apps/web/vercel.json` |
+| API | `apps/api` | Express Function entry at `apps/api/index.ts` and build configuration in `apps/api/vercel.json` |
+
+Both project settings must allow source files outside their Root Directory so npm can install and build `packages/shared`. Configure `VITE_API_BASE_URL` only in the web project; configure `NODE_ENV`, exact `WEB_ORIGIN`, and secret `DATABASE_URL` only in the API project. See the deployment guide for ordering, PostgreSQL, CORS, previews, and verification.
 
 ## Verification
 

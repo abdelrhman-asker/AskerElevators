@@ -14,6 +14,7 @@ These rules apply to every change in this repository.
 
 - Use Node.js 24 and npm 11. Install only from the repository root with `npm ci`; maintain one root lockfile.
 - Start the full development stack with `npm run dev`, or use `npm run dev:api` and `npm run dev:web` separately.
+- Vercel uses separate projects rooted at `apps/web` and `apps/api`; their tracked `vercel-build` scripts must compile `@elevator/shared` first. Never add migration execution to a Vercel build or API startup.
 - Before handing off a change, run `npm run lint`, `npm run typecheck`, `npm run build`, and `npm test`.
 - Database commands are `npm run db:up`, `npm run db:check`, `npm run db:generate`, `npm run db:migrate`, `npm run db:studio`, `npm run test:db`, `npm run db:logs`, and `npm run db:down`.
 - `npm run db:reset` is destructive: it removes the local named PostgreSQL volume. Never run it without explicit user authorization and a verified local target.
@@ -24,6 +25,7 @@ These rules apply to every change in this repository.
 - Validate environment values, HTTP payloads, persisted browser values, and other external input with Zod at the boundary.
 - Infer types from shared schemas where practical. Coordinate contract changes through `@elevator/shared` and test both consumers.
 - Keep `app.ts` testable without binding a port; process environment and listener lifecycle stay in process entry points.
+- Keep `apps/api/index.ts` listener-free: it is the Vercel Express entry. Local listening, signal handling, and owned database shutdown stay in `apps/api/src/server.ts`.
 
 ## Security invariants
 
