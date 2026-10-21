@@ -1,5 +1,5 @@
-import { createApp } from "./app.js";
 import { ConfigurationError, parseApiEnv } from "./config/env.js";
+import { createApp } from "./create-app.js";
 import { createDatabase } from "./db/client.js";
 
 function startServer(): void {

@@ -2,7 +2,7 @@ import express from "express";
 import request from "supertest";
 import { describe, expect, it } from "vitest";
 
-import { createApp } from "../app.js";
+import { createApp } from "../create-app.js";
 import { errorHandler } from "./error-handler.js";
 
 describe("HTTP error handling", () => {

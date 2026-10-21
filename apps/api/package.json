@@ -3,16 +3,16 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "main": "dist/server.js",
+  "main": "dist/start-server.js",
   "engines": {
     "node": ">=24.0.0 <25.0.0",
     "npm": ">=11.0.0 <12.0.0"
   },
   "scripts": {
-    "dev": "node --watch --env-file-if-exists=../../.env --import=tsx src/server.ts",
+    "dev": "node --watch --env-file-if-exists=../../.env --import=tsx src/start-server.ts",
     "build": "tsc --project tsconfig.build.json",
     "vercel-build": "npm run build --workspace @elevator/shared",
-    "start": "node dist/server.js",
+    "start": "node dist/start-server.js",
     "lint": "eslint index*.ts src --max-warnings=0",
     "typecheck": "tsc --project tsconfig.json",
     "test": "vitest run --exclude src/db/check.integration.test.ts",

@@ -2,7 +2,7 @@ import { healthResponseSchema } from "@elevator/shared";
 import request from "supertest";
 import { describe, expect, it } from "vitest";
 
-import { createApp } from "../app.js";
+import { createApp } from "../create-app.js";
 
 const app = createApp({ webOrigin: "http://localhost:5173" });
 

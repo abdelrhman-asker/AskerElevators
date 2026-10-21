@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 
 describe("API application module", () => {
   it("can be imported and configured without opening a listener", async () => {
-    const { createApp } = await import("./app.js");
+    const { createApp } = await import("./create-app.js");
     const app = createApp({ webOrigin: "http://localhost:5173" });
 
     expect(createApp).toBeTypeOf("function");

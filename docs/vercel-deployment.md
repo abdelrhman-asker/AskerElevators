@@ -28,7 +28,7 @@ The tracked `vercel.json` files provide the build commands. Do not replace them 
 | `WEB_ORIGIN` | `https://your-web-project.vercel.app` | Exact browser origin, without a trailing slash or path. |
 | `DATABASE_URL` | `postgresql://…?sslmode=require` | Managed PostgreSQL connection string; never expose it to the web project. |
 
-The Vercel entry point is `apps/api/index.ts`. It validates configuration and default-exports the composed Express application without opening a listener or creating a database connection. Local development continues to use `apps/api/src/server.ts`.
+The Vercel entry point is `apps/api/index.ts`. It validates configuration and default-exports the composed Express application without opening a listener or creating a database connection. Local development continues to use `apps/api/src/start-server.ts`; internal modules deliberately avoid competing Vercel-recognized entry-point names.
 
 After deployment, verify:
 

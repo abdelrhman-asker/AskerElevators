@@ -1,5 +1,5 @@
-import { createApp } from "./src/app.js";
 import { parseApiEnv } from "./src/config/env.js";
+import { createApp } from "./src/create-app.js";
 
 const config = parseApiEnv(process.env);
 
