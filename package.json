@@ -1,0 +1,44 @@
+{
+  "name": "elevator-maintenance-platform",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "npm@11.6.2",
+  "engines": {
+    "node": ">=24.0.0 <25.0.0",
+    "npm": ">=11.0.0 <12.0.0"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run build --workspace @elevator/shared && concurrently --kill-others-on-fail --names api,web \"npm run dev --workspace @elevator/api\" \"npm run dev --workspace @elevator/web\"",
+    "dev:api": "npm run build --workspace @elevator/shared && npm run dev --workspace @elevator/api",
+    "dev:web": "npm run build --workspace @elevator/shared && npm run dev --workspace @elevator/web",
+    "build": "npm run build --workspace @elevator/shared && npm run build --workspace @elevator/api && npm run build --workspace @elevator/web",
+    "lint": "npm run lint --workspace @elevator/shared && npm run lint --workspace @elevator/api && npm run lint --workspace @elevator/web",
+    "typecheck": "npm run typecheck --workspace @elevator/shared && npm run typecheck --workspace @elevator/api && npm run typecheck --workspace @elevator/web",
+    "test": "npm run test --workspace @elevator/shared && npm run test --workspace @elevator/api && npm run test --workspace @elevator/web",
+    "test:db": "npm run test:db --workspace @elevator/api",
+    "db:generate": "npm run db:generate --workspace @elevator/api",
+    "db:migrate": "npm run db:migrate --workspace @elevator/api",
+    "db:check": "npm run db:check --workspace @elevator/api",
+    "db:studio": "npm run db:studio --workspace @elevator/api",
+    "db:up": "docker compose --env-file .env up -d postgres",
+    "db:logs": "docker compose --env-file .env logs --follow postgres",
+    "db:down": "docker compose --env-file .env down",
+    "db:reset": "docker compose --env-file .env down --volumes"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "concurrently": "^10.0.6",
+    "eslint": "^10.13.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.7",
+    "globals": "^17.13.0",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.71.2",
+    "vitest": "^5.0.5"
+  }
+}

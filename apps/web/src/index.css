@@ -1,0 +1,132 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  color-scheme: light;
+  --background: oklch(0.982 0.006 240);
+  --foreground: oklch(0.22 0.025 247);
+  --surface: oklch(1 0 0);
+  --muted: oklch(0.955 0.012 241);
+  --muted-foreground: oklch(0.49 0.028 247);
+  --border: oklch(0.89 0.018 241);
+  --primary: oklch(0.46 0.12 241);
+  --primary-foreground: oklch(0.985 0 0);
+  --ring: oklch(0.56 0.14 241);
+  --success: oklch(0.5 0.13 153);
+  --warning: oklch(0.59 0.13 66);
+  --danger: oklch(0.55 0.2 27);
+}
+
+.dark {
+  color-scheme: dark;
+  --background: oklch(0.17 0.022 247);
+  --foreground: oklch(0.94 0.01 241);
+  --surface: oklch(0.22 0.027 247);
+  --muted: oklch(0.27 0.026 247);
+  --muted-foreground: oklch(0.72 0.025 241);
+  --border: oklch(0.33 0.03 247);
+  --primary: oklch(0.7 0.13 236);
+  --primary-foreground: oklch(0.16 0.02 247);
+  --ring: oklch(0.7 0.13 236);
+  --success: oklch(0.72 0.14 153);
+  --warning: oklch(0.77 0.14 74);
+  --danger: oklch(0.72 0.17 24);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-ring: var(--ring);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --font-sans: "Segoe UI", Tahoma, Arial, sans-serif;
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  min-width: 320px;
+  background: var(--background);
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100dvh;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+}
+
+html[lang="ar"] body {
+  font-family: Tahoma, "Segoe UI", Arial, sans-serif;
+}
+
+html[dir="rtl"] .directional-icon,
+html[dir="rtl"] .lucide-chevron-left,
+html[dir="rtl"] .lucide-chevron-right {
+  transform: rotate(180deg);
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--primary) 25%, transparent);
+}
+
+.elevator-lines {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-end: 0;
+  width: min(38%, 26rem);
+  opacity: 0.75;
+  background:
+    linear-gradient(
+      90deg,
+      transparent 0 30%,
+      color-mix(in oklab, var(--primary) 8%, transparent) 30% 31%,
+      transparent 31% 66%,
+      color-mix(in oklab, var(--primary) 12%, transparent) 66% 67%,
+      transparent 67%
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in oklab, var(--primary) 8%, transparent),
+      transparent 70%
+    );
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
