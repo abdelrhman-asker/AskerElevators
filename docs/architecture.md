@@ -36,7 +36,7 @@ The development process loads the ignored root `.env`; production must inject en
 
 Central middleware returns structured JSON for unknown routes, malformed JSON, and unexpected errors without stack traces or raw details.
 
-For Vercel, `apps/api/index.ts` is a separate serverless entry point. It validates the same environment contract and default-exports the composed Express application without binding a port, installing signal handlers, or creating an unused database pool. The factory and local listener deliberately avoid Vercel's reserved `app`, `index`, and `server` entry-point names under `src`; `src/start-server.ts` remains the sole owner of the long-running listener and graceful-shutdown lifecycle.
+For Vercel, `apps/api/index.ts` is a separate serverless entry point. It imports Express directly for framework detection, validates the same environment contract, and default-exports the composed application without binding a port, installing signal handlers, or creating an unused database pool. The factory and local listener deliberately avoid Vercel's reserved `app`, `index`, and `server` entry-point names under `src`; `src/start-server.ts` remains the sole owner of the long-running listener and graceful-shutdown lifecycle.
 
 The web and API deploy as two Vercel projects rooted at `apps/web` and `apps/api`. Each tracked Vercel build compiles the shared workspace first. The web deployment emits static Vite assets and applies an SPA fallback; the API deployment runs Express as a Node.js 24 Function. This is deployment scaffolding, not evidence that the repository has been deployed or is production-ready.
 

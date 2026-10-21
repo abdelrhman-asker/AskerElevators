@@ -25,7 +25,7 @@ These rules apply to every change in this repository.
 - Validate environment values, HTTP payloads, persisted browser values, and other external input with Zod at the boundary.
 - Infer types from shared schemas where practical. Coordinate contract changes through `@elevator/shared` and test both consumers.
 - Keep `create-app.ts` testable without binding a port; process environment and listener lifecycle stay in process entry points.
-- Keep `apps/api/index.ts` listener-free: it is the Vercel Express entry. Local listening, signal handling, and owned database shutdown stay in `apps/api/src/start-server.ts`. Do not add `app.ts`, `server.ts`, or another competing Vercel-recognized entry point under `apps/api/src`.
+- Keep `apps/api/index.ts` listener-free: it is the Vercel Express entry and must directly import `express` so Vercel detects it. Local listening, signal handling, and owned database shutdown stay in `apps/api/src/start-server.ts`. Do not add `app.ts`, `server.ts`, or another competing Vercel-recognized entry point under `apps/api/src`.
 
 ## Security invariants
 
